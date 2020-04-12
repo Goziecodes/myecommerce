@@ -1,33 +1,33 @@
 const INITIAL_STATE = {
-    sections: [
+    sections: [  
         {
           title: 'hats',
-          imageUrl: './images/1.jpg',
+          imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
           id: 1,
           linkUrl: 'shop/hats'
         },
         {
           title: 'jackets',
-          imageUrl: './images/2.jpg',
+          imageUrl: 'https://i.ibb.co/XzcwL5s/black-shearling.png',
           id: 2,
           linkUrl: 'shop/jackets'
         },
         {
           title: 'sneakers',
-          imageUrl: './images/3.jpg',
+          imageUrl: 'https://i.ibb.co/0s3pdnc/adidas-nmd.png',
           id: 3,
           linkUrl: 'shop/sneakers'
         },
         {
           title: 'womens',
-          imageUrl: './images/4.jpg',
+          imageUrl: 'https://i.ibb.co/7CQVJNm/blue-tank.png',
           size: 'large',
           id: 4,
           linkUrl: 'shop/womens'
         },
         {
           title: 'mens',
-          imageUrl: './images/5.jpg',
+          imageUrl: 'https://i.ibb.co/xJS0T3Y/camo-vest.png',
           size: 'large',
           id: 5,
           linkUrl: 'shop/mens'
