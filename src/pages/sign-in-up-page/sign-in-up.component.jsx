@@ -8,7 +8,7 @@ const SignInAndSignUpPage = () => (
         <SignIn />
         <SignUp />
     </div>
-);
+); 
 
 
 

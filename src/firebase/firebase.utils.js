@@ -11,15 +11,25 @@ const config = {
         messagingSenderId: "28166265523",
         appId: "1:28166265523:web:e509c68e01aab04091eec6",
         measurementId: "G-F8LD0248ZV"
-};
+}; 
+
+firebase.initializeApp(config);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
         if(!userAuth) return;
 
         const userRef = firestore.doc(`users/${userAuth.uid}`);
+        // console.log(userRef);
+
+        // const collectionRef = firestore.collection('users');
+        // console.log(collectionRef);
+        
 
         const snapShot = await userRef.get();
-        // console.log(snapShot);
+        // console.log(snapShot.data());
+
+        // const collectionSnapshot = await collectionRef.get();
+        // console.log({collection: collectionSnapshot.docs.map(doc => doc.data())});
 
         if(!snapShot.exists){
                 const {displayName, email} = userAuth;
@@ -42,7 +52,42 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         // console.log(firestore.doc('users/ABCDEFGHIJ'));
 };
 
-firebase.initializeApp(config);
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+        const collectionRef = firestore.collection(collectionKey);
+        // console.log(collectionRef);
+
+        const batch = firestore.batch();
+        objectsToAdd.forEach(obj =>{
+                const newDocRef = collectionRef.doc();
+                // console.log(newDocRef);
+                batch.set(newDocRef, obj);
+        });
+
+     return await batch.commit();
+}
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+        const transformedCollection = collections.docs.map(doc => {
+                const {title, items} = doc.data();
+
+                return {
+                        routeName: encodeURI(title.toLocaleLowerCase()),
+                        id: doc.id,
+                        title,
+                        items
+                }
+        });
+        // console.log(transformedCollection); 
+//        console.log(transformedCollection.reduce((accumulator, collection) => {
+//                 accumulator[collection.title.toLowerCase()] = collection;
+//                 return accumulator;
+//         },{}) )
+
+       return transformedCollection.reduce((accumulator, collection) => {
+                accumulator[collection.title.toLowerCase()] = collection;
+                return accumulator;
+        },{})
+}
 
 export const auth  = firebase.auth();
 export const firestore = firebase.firestore();
