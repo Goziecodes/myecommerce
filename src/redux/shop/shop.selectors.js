@@ -22,7 +22,7 @@ export const selectCollectionsForPreview = createSelector(
     (collections) => collections ? Object.keys(collections).map(key => collections[key]) : []
 )
 
-export const selectCollection =( collectionUrlParam) => 
+export const selectCollection = (collectionUrlParam) => 
     createSelector(
         [selectCollections],
         (collections) =>( collections ?  collections[collectionUrlParam] : null)
@@ -30,4 +30,15 @@ export const selectCollection =( collectionUrlParam) =>
         // when we implemented collection id map b4 switching to data normalization
         // collections.find(
         //     collection => collection.id ===  COLLECTION_ID_MAP[collectionUrlParam])
-    )
+    );
+
+
+    export const selectIsCollectionFetching = createSelector(
+        [selectShop],
+        shop => shop.isFetching
+    );
+
+    export const selectIsCollectionsLoaded = createSelector(
+        [selectShop],
+        shop => !!shop.collections
+    );
