@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Route} from 'react-router-dom';
-import {createStructuredSelector} from 'reselect';
+// import {createStructuredSelector} from 'reselect';
 import {connect} from 'react-redux';
 
 import {fetchCollectionsStart} from '../../redux/shop/shop.actions';
@@ -13,6 +13,7 @@ import CollectionsOverviewContainer from '../../components/collections-overview/
 import CollectionPageContainer from '../collection/collection.container'; 
 
 
+
 // import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
 
@@ -22,17 +23,20 @@ import CollectionPageContainer from '../collection/collection.container';
 // const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 // match prop comes from our shop component being nested with a Route tag in app.js, along with history and location
-class ShopPage extends React.Component{
+const ShopPage= (fetchCollectionsStart, match, isCollectionLoaded ) =>{
 
-    componentDidMount(){  
-        const {fetchCollectionsStart} = this.props;
+    useEffect(() => {
         fetchCollectionsStart();
+    }, [fetchCollectionsStart ])
 
-    }  
+    // componentDidMount(){  
+    //     const {fetchCollectionsStart} = this.props;
+    //     fetchCollectionsStart();
+
+    // }  
  
-    render(){
-        const {match,  isCollectionLoaded} = this.props;
-         // console.log(match);
+    
+    // console.log(match);
     // console.log(history);
     // console.log(location);
     
@@ -47,7 +51,6 @@ class ShopPage extends React.Component{
                 {/* <div>{console.log( 'isCollectionLoaded  ' + isCollectionLoaded)}</div> */}
             </div>
         )
-    }
 }
 
 // const mapStateToProps = createStructuredSelector({

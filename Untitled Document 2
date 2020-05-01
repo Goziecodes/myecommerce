@@ -1,0 +1,33 @@
+ // *********************** working upload setting using multer and gridfsstorage, difficulty in streaming back the file *********************************
+  //   const storage = new GridFsStorage({
+  //     db: mongoose.connect('mongodb://localhost:27017/sajjal', {useNewUrlParser: true, useUnifiedTopology: true} ) ,
+  //     file: (req, file) => {
+  //       return new Promise((resolve, reject) => {
+  //         crypto.randomBytes(16, (err, buf) => {
+  //           if (err) {
+  //             return reject(err);
+  //           }
+  //           const filename = buf.toString('hex') + path.extname(file.originalname);
+  //           const fileInfo = {
+  //             filename: filename,
+  //             bucketName: 'uploads'
+  //           };
+  //           resolve(fileInfo);
+  //         });
+  //       });
+  //     }
+  //   });
+  //  const upload = multer({ storage: storage});
+  // *********************** end of working upload setting using multer and gridfsstorage, difficulty in streaming back the file *********************************
+
+
+
+
+
+
+
+
+
+
+
+
