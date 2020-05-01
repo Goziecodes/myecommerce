@@ -16,10 +16,9 @@ import {checkUserSession} from './redux/user/user.actions';
 
 
 
-const App = (checkUserSession, currentUser) => {
-
+const App = ({checkUserSession, currentUser}) => {
   useEffect(() => {
-    checkUserSession()
+    checkUserSession();
   }, [checkUserSession]);
 
   
@@ -43,7 +42,8 @@ const App = (checkUserSession, currentUser) => {
 
 // added createstructredselector from reselect incase we need to pass other values later
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  a: () => true
 })
 
 const mapDispatchToProps = dispatch =>({

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {firestore} from '../../firebase/firebase.utils';
 import {connect} from 'react-redux';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 import {selectCollection} from '../../redux/shop/shop.selectors'
@@ -7,6 +8,7 @@ import './collection.style.scss';
   
 
 const CollectionPage = ({match, collection}) =>{
+
     // console.log(match.params.collectionId );
     const {title, items} = collection;
     console.log(collection );

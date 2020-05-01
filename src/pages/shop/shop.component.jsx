@@ -23,7 +23,7 @@ import CollectionPageContainer from '../collection/collection.container';
 // const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 // match prop comes from our shop component being nested with a Route tag in app.js, along with history and location
-const ShopPage= (fetchCollectionsStart, match, isCollectionLoaded ) =>{
+const ShopPage= ({fetchCollectionsStart, match, isCollectionLoaded }) =>{
 
     useEffect(() => {
         fetchCollectionsStart();
